@@ -1,0 +1,33 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Web;
+
+namespace RestaurantPlanner.Models
+{
+    public class Getraenk
+    {
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int GetraenkId { get; set; }
+
+        [Required]
+        public string GetraenkName { get; set; }
+
+        [Required, Range(minimum: 0.1D, maximum: double.MaxValue)]
+        public double GetraenkPreis { get; set; }
+
+        [DefaultValue(false)]
+        public bool HeissesGetraenk { get; set; }
+
+        [DefaultValue(false)]
+        public bool AlkoholischesGetränk { get; set; }
+
+        [Required, Range(minimum: 0.04D, maximum: 0.7D)]
+        public double GetränkMenge { get; set; }
+
+        public virtual Menu MenuZugehoerigkeit { get; set; }
+    }
+}

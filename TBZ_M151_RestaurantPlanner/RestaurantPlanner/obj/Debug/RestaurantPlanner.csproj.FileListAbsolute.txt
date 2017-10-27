@@ -105,3 +105,5 @@ D:\TBZ\151\repo\TBZ_M151_RestaurantPlanner\RestaurantPlanner\obj\Debug\Restauran
 D:\TBZ\151\repo\TBZ_M151_RestaurantPlanner\RestaurantPlanner\obj\Debug\RestaurantPlanner.csproj.CoreCompileInputs.cache
 D:\TBZ\151\repo\TBZ_M151_RestaurantPlanner\RestaurantPlanner\obj\Debug\RestaurantPlanner.dll
 D:\TBZ\151\repo\TBZ_M151_RestaurantPlanner\RestaurantPlanner\obj\Debug\RestaurantPlanner.pdb
+D:\TBZ\151\repo\TBZ_M151_RestaurantPlanner\RestaurantPlanner\obj\Debug\RestaurantPlanner.Migrations.initialcreate.resources
+D:\TBZ\151\repo\TBZ_M151_RestaurantPlanner\RestaurantPlanner\obj\Debug\RestaurantPlanner.csproj.GenerateResource.Cache

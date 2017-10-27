@@ -1,18 +1,15 @@
 namespace RestaurantPlanner.Migrations
 {
-    using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<RestaurantPlanner.RestaurantPlannerContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<RestaurantPlanner.DAL.RestaurantPlannerContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(RestaurantPlanner.RestaurantPlannerContext context)
+        protected override void Seed(RestaurantPlanner.DAL.RestaurantPlannerContext context)
         {
             //  This method will be called after migrating to the latest version.
 

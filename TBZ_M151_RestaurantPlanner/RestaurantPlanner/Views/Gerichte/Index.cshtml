@@ -1,0 +1,45 @@
+﻿@model IEnumerable<RestaurantPlanner.Models.Gericht>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.GerichtName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GerichtPreis)
+        </th>
+        <th>
+            Menü
+        </th>
+        <th/>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.GerichtName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GerichtPreis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MenuZugehoerigkeit.MenuName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.GerichtId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.GerichtId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.GerichtId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,64 @@
+﻿@model RestaurantPlanner.Models.Getraenk
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Getraenk</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GetraenkName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GetraenkName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GetraenkPreis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GetraenkPreis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HeissesGetraenk)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HeissesGetraenk)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AlkoholischesGetraenk)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AlkoholischesGetraenk)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GetraenkMenge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GetraenkMenge)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

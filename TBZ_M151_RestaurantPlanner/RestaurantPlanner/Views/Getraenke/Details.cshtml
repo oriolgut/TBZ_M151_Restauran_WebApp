@@ -11,7 +11,7 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.GetraenkName)
+            Name
         </dt>
 
         <dd>
@@ -19,7 +19,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.GetraenkPreis)
+            Preis
         </dt>
 
         <dd>
@@ -27,7 +27,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.HeissesGetraenk)
+            Heiss
         </dt>
 
         <dd>
@@ -35,7 +35,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.AlkoholischesGetraenk)
+            mit Alkohol
         </dt>
 
         <dd>
@@ -43,16 +43,24 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.GetraenkMenge)
+            Mass
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.GetraenkMenge)
         </dd>
+        
+        <dt>
+            Menu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MenuZugehoerigkeit.MenuName)
+        </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.GetraenkId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Bearbeiten", "Edit", new { id = Model.GetraenkId }) |
+    @Html.ActionLink("Zurück zur Liste", "Index")
 </p>

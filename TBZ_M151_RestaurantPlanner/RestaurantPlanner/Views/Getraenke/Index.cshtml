@@ -1,30 +1,24 @@
 ﻿@model IEnumerable<RestaurantPlanner.Models.Getraenk>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Getränke Übersicht";
 }
 
-<h2>Index</h2>
+<h2>Übersicht</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Getränk Erstellen", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.GetraenkName)
+            Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.GetraenkPreis)
+            Preis
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.HeissesGetraenk)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AlkoholischesGetraenk)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GetraenkMenge)
+            Menu
         </th>
         <th></th>
     </tr>
@@ -38,18 +32,12 @@
             @Html.DisplayFor(modelItem => item.GetraenkPreis)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.HeissesGetraenk)
+            @Html.DisplayFor(modelItem => item.MenuZugehoerigkeit.MenuName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AlkoholischesGetraenk)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GetraenkMenge)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.GetraenkId }) |
+            @Html.ActionLink("Bearbeiten", "Edit", new { id=item.GetraenkId }) |
             @Html.ActionLink("Details", "Details", new { id=item.GetraenkId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.GetraenkId })
+            @Html.ActionLink("Löschen", "Delete", new { id=item.GetraenkId })
         </td>
     </tr>
 }

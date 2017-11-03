@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using RestaurantPlanner.DAL;
 using RestaurantPlanner.Models;
@@ -13,12 +10,12 @@ namespace RestaurantPlanner.Controllers
 {
     public class GetraenkeController : Controller
     {
-        private RestaurantPlannerContext db = new RestaurantPlannerContext();
+        private readonly RestaurantPlannerContext _db = new RestaurantPlannerContext();
 
         // GET: Getraenke
         public ActionResult Index()
         {
-            return View(db.Getraenke.ToList());
+            return View(_db.Getraenke.ToList());
         }
 
         // GET: Getraenke/Details/5
@@ -28,7 +25,7 @@ namespace RestaurantPlanner.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Getraenk getraenk = db.Getraenke.Find(id);
+            var getraenk = _db.Getraenke.Find(id);
             if (getraenk == null)
             {
                 return HttpNotFound();
@@ -47,16 +44,19 @@ namespace RestaurantPlanner.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "GetraenkId,GetraenkName,GetraenkPreis,HeissesGetraenk,AlkoholischesGetraenk,GetraenkMenge")] Getraenk getraenk)
+        public ActionResult Create(Getraenk getraenk)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid) return View(getraenk);
+            var menu = _db.Menus.FirstOrDefault(x =>
+                x.MenuName.Equals(getraenk.MenuZugehoerigkeit.MenuName,
+                    StringComparison.InvariantCultureIgnoreCase));
+            if (menu != null)
             {
-                db.Getraenke.Add(getraenk);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                getraenk.MenuZugehoerigkeit = menu;
             }
-
-            return View(getraenk);
+            _db.Getraenke.Add(getraenk);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // GET: Getraenke/Edit/5
@@ -66,7 +66,7 @@ namespace RestaurantPlanner.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Getraenk getraenk = db.Getraenke.Find(id);
+            var getraenk = _db.Getraenke.Find(id);
             if (getraenk == null)
             {
                 return HttpNotFound();
@@ -79,15 +79,21 @@ namespace RestaurantPlanner.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "GetraenkId,GetraenkName,GetraenkPreis,HeissesGetraenk,AlkoholischesGetraenk,GetraenkMenge")] Getraenk getraenk)
+        public ActionResult Edit(Getraenk getraenk)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid) return View(getraenk);
+
+            var menu = _db.Menus.FirstOrDefault(x => x.MenuName.Equals(getraenk.MenuZugehoerigkeit.MenuName));
+            if (menu == null)
             {
-                db.Entry(getraenk).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                _db.Menus.Add(getraenk.MenuZugehoerigkeit);
+                _db.SaveChanges();
+                menu = _db.Menus.First(x => x.MenuName.Equals(getraenk.MenuZugehoerigkeit.MenuName));
             }
-            return View(getraenk);
+            getraenk.MenuId = menu.MenuId;
+            _db.Entry(getraenk).State = EntityState.Modified;
+            _db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // GET: Getraenke/Delete/5
@@ -97,7 +103,7 @@ namespace RestaurantPlanner.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Getraenk getraenk = db.Getraenke.Find(id);
+            var getraenk = _db.Getraenke.Find(id);
             if (getraenk == null)
             {
                 return HttpNotFound();
@@ -108,11 +114,19 @@ namespace RestaurantPlanner.Controllers
         // POST: Getraenke/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int? id)
         {
-            Getraenk getraenk = db.Getraenke.Find(id);
-            db.Getraenke.Remove(getraenk);
-            db.SaveChanges();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var getraenk = _db.Getraenke.Find(id);
+            if (getraenk == null)
+            {
+                return HttpNotFound();
+            }
+            _db.Getraenke.Remove(getraenk);
+            _db.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -120,7 +134,7 @@ namespace RestaurantPlanner.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }

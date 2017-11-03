@@ -89,10 +89,9 @@ namespace RestaurantPlanner.Controllers
                 _db.SaveChanges();
                 menu = _db.Menus.First(x => x.MenuName.Equals(gericht.MenuZugehoerigkeit.MenuName));
             }
-            gericht.MenuZugehoerigkeit = menu;
+            gericht.MenuId = menu.MenuId;
             _db.Entry(gericht).State = EntityState.Modified;
             _db.SaveChanges();
-            var temp = _db.Gerichte.FirstOrDefault(x => x.GerichtId == gericht.GerichtId);
             return RedirectToAction("Index");
         }
 

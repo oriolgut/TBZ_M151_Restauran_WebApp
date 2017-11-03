@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<RestaurantPlanner.Models.Gericht>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Gerichte Übersicht";
 }
 
-<h2>Index</h2>
+<h2>Übersicht</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -35,9 +35,9 @@
             @Html.DisplayFor(modelItem => item.MenuZugehoerigkeit.MenuName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.GerichtId }) |
+            @Html.ActionLink("Bearbeiten", "Edit", new { id=item.GerichtId }) |
             @Html.ActionLink("Details", "Details", new { id=item.GerichtId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.GerichtId })
+            @Html.ActionLink("Löschen", "Delete", new { id=item.GerichtId })
         </td>
     </tr>
 }

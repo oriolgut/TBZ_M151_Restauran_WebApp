@@ -15,7 +15,9 @@ namespace RestaurantPlanner.Models
         [Required, Range(minimum: 0.1D, maximum: double.MaxValue)]
         public double GerichtPreis { get; set; }
 
-        [Required]
+        public int MenuId { get; set; }
+
+        [Required, ForeignKey(nameof(MenuId))]
         public virtual Menu MenuZugehoerigkeit { get; set; }
 
         public virtual List<Tageskarte> Tageskarten { get; set; }

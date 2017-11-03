@@ -23,12 +23,12 @@ namespace RestaurantPlanner.Migrations
                         GerichtId = c.Int(nullable: false, identity: true),
                         GerichtName = c.String(nullable: false),
                         GerichtPreis = c.Double(nullable: false),
-                        MenuZugehoerigkeit_MenuId = c.Int(nullable: false),
+                        MenuId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.GerichtId)
-                .ForeignKey("dbo.Menu", t => t.MenuZugehoerigkeit_MenuId, cascadeDelete: true)
-                .Index(t => t.MenuZugehoerigkeit_MenuId);
-           
+                .ForeignKey("dbo.Menu", t => t.MenuId)
+                .Index(t => t.MenuId);
+            
             CreateTable(
                 "dbo.Tageskarte",
                 c => new
@@ -38,7 +38,7 @@ namespace RestaurantPlanner.Migrations
                         MenuZugehoerigkeit_MenuId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.TageskarteId)
-                .ForeignKey("dbo.Menu", t => t.MenuZugehoerigkeit_MenuId, cascadeDelete: true)
+                .ForeignKey("dbo.Menu", t => t.MenuZugehoerigkeit_MenuId)
                 .Index(t => t.MenuZugehoerigkeit_MenuId);
             
             CreateTable(
@@ -51,11 +51,11 @@ namespace RestaurantPlanner.Migrations
                         HeissesGetraenk = c.Boolean(nullable: false),
                         AlkoholischesGetraenk = c.Boolean(nullable: false),
                         GetraenkMenge = c.Double(nullable: false),
-                        MenuZugehoerigkeit_MenuId = c.Int(nullable: false),
+                        MenuId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.GetraenkId)
-                .ForeignKey("dbo.Menu", t => t.MenuZugehoerigkeit_MenuId, cascadeDelete: true)
-                .Index(t => t.MenuZugehoerigkeit_MenuId);
+                .ForeignKey("dbo.Menu", t => t.MenuId)
+                .Index(t => t.MenuId);
             
             CreateTable(
                 "dbo.TageskarteGericht",
@@ -66,7 +66,7 @@ namespace RestaurantPlanner.Migrations
                     })
                 .PrimaryKey(t => new { t.Tageskarte_TageskarteId, t.Gericht_GerichtId })
                 .ForeignKey("dbo.Tageskarte", t => t.Tageskarte_TageskarteId, cascadeDelete: true)
-                .ForeignKey("dbo.Gericht", t => t.Gericht_GerichtId)
+                .ForeignKey("dbo.Gericht", t => t.Gericht_GerichtId, cascadeDelete: true)
                 .Index(t => t.Tageskarte_TageskarteId)
                 .Index(t => t.Gericht_GerichtId);
             
@@ -79,7 +79,7 @@ namespace RestaurantPlanner.Migrations
                     })
                 .PrimaryKey(t => new { t.Getraenk_GetraenkId, t.Tageskarte_TageskarteId })
                 .ForeignKey("dbo.Getraenk", t => t.Getraenk_GetraenkId, cascadeDelete: true)
-                .ForeignKey("dbo.Tageskarte", t => t.Tageskarte_TageskarteId)
+                .ForeignKey("dbo.Tageskarte", t => t.Tageskarte_TageskarteId, cascadeDelete: true)
                 .Index(t => t.Getraenk_GetraenkId)
                 .Index(t => t.Tageskarte_TageskarteId);
             
@@ -90,17 +90,17 @@ namespace RestaurantPlanner.Migrations
             DropForeignKey("dbo.Tageskarte", "MenuZugehoerigkeit_MenuId", "dbo.Menu");
             DropForeignKey("dbo.GetraenkTageskarte", "Tageskarte_TageskarteId", "dbo.Tageskarte");
             DropForeignKey("dbo.GetraenkTageskarte", "Getraenk_GetraenkId", "dbo.Getraenk");
-            DropForeignKey("dbo.Getraenk", "MenuZugehoerigkeit_MenuId", "dbo.Menu");
+            DropForeignKey("dbo.Getraenk", "MenuId", "dbo.Menu");
             DropForeignKey("dbo.TageskarteGericht", "Gericht_GerichtId", "dbo.Gericht");
             DropForeignKey("dbo.TageskarteGericht", "Tageskarte_TageskarteId", "dbo.Tageskarte");
-            DropForeignKey("dbo.Gericht", "MenuZugehoerigkeit_MenuId", "dbo.Menu");
+            DropForeignKey("dbo.Gericht", "MenuId", "dbo.Menu");
             DropIndex("dbo.GetraenkTageskarte", new[] { "Tageskarte_TageskarteId" });
             DropIndex("dbo.GetraenkTageskarte", new[] { "Getraenk_GetraenkId" });
             DropIndex("dbo.TageskarteGericht", new[] { "Gericht_GerichtId" });
             DropIndex("dbo.TageskarteGericht", new[] { "Tageskarte_TageskarteId" });
-            DropIndex("dbo.Getraenk", new[] { "MenuZugehoerigkeit_MenuId" });
+            DropIndex("dbo.Getraenk", new[] { "MenuId" });
             DropIndex("dbo.Tageskarte", new[] { "MenuZugehoerigkeit_MenuId" });
-            DropIndex("dbo.Gericht", new[] { "MenuZugehoerigkeit_MenuId" });
+            DropIndex("dbo.Gericht", new[] { "MenuId" });
             DropTable("dbo.GetraenkTageskarte");
             DropTable("dbo.TageskarteGericht");
             DropTable("dbo.Getraenk");

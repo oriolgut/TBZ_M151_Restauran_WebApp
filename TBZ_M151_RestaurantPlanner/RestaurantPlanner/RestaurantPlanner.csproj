@@ -172,13 +172,15 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\GerichteController.cs" />
+    <Compile Include="Controllers\GetraenkeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710270906141_initialcreate.cs" />
-    <Compile Include="Migrations\201710270906141_initialcreate.Designer.cs">
-      <DependentUpon>201710270906141_initialcreate.cs</DependentUpon>
+    <Compile Include="Migrations\201711030809505_initial-create.cs" />
+    <Compile Include="Migrations\201711030809505_initial-create.Designer.cs">
+      <DependentUpon>201711030809505_initial-create.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Gericht.cs" />
@@ -227,6 +229,16 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Gerichte\Create.cshtml" />
+    <Content Include="Views\Gerichte\Delete.cshtml" />
+    <Content Include="Views\Gerichte\Details.cshtml" />
+    <Content Include="Views\Gerichte\Edit.cshtml" />
+    <Content Include="Views\Gerichte\Index.cshtml" />
+    <Content Include="Views\Getraenke\Create.cshtml" />
+    <Content Include="Views\Getraenke\Delete.cshtml" />
+    <Content Include="Views\Getraenke\Details.cshtml" />
+    <Content Include="Views\Getraenke\Edit.cshtml" />
+    <Content Include="Views\Getraenke\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -246,8 +258,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201710270906141_initialcreate.resx">
-      <DependentUpon>201710270906141_initialcreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711030809505_initial-create.resx">
+      <DependentUpon>201711030809505_initial-create.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

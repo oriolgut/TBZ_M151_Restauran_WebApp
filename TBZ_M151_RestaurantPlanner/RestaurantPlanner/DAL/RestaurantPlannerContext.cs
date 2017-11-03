@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using RestaurantPlanner.Models;
 
 namespace RestaurantPlanner.DAL
@@ -17,5 +18,10 @@ namespace RestaurantPlanner.DAL
         public DbSet<Getraenk> Getraenke { get; set; }
 
         public DbSet<Tageskarte> Tageskarten { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
     }
 }

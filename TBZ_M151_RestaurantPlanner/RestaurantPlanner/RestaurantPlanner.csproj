@@ -172,17 +172,17 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\GerichteController.cs" />
-    <Compile Include="Controllers\GetraenkeController.cs" />
+    <Compile Include="Controllers\GerichtController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MenusController.cs" />
-    <Compile Include="DAL\DbHelper.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="DataTransferObjects\GerichtDataTransferObject.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711031021475_initialcreate.cs" />
-    <Compile Include="Migrations\201711031021475_initialcreate.Designer.cs">
-      <DependentUpon>201711031021475_initialcreate.cs</DependentUpon>
+    <Compile Include="MenuHelper.cs" />
+    <Compile Include="Migrations\201711101716125_initialcreate.cs" />
+    <Compile Include="Migrations\201711101716125_initialcreate.Designer.cs">
+      <DependentUpon>201711101716125_initialcreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Gericht.cs" />
@@ -231,21 +231,19 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Gerichte\Create.cshtml" />
-    <Content Include="Views\Gerichte\Delete.cshtml" />
-    <Content Include="Views\Gerichte\Details.cshtml" />
-    <Content Include="Views\Gerichte\Edit.cshtml" />
-    <Content Include="Views\Gerichte\Index.cshtml" />
-    <Content Include="Views\Getraenke\Create.cshtml" />
-    <Content Include="Views\Getraenke\Delete.cshtml" />
-    <Content Include="Views\Getraenke\Details.cshtml" />
-    <Content Include="Views\Getraenke\Edit.cshtml" />
-    <Content Include="Views\Getraenke\Index.cshtml" />
-    <Content Include="Views\Menus\Index.cshtml" />
+    <Content Include="Views\Gericht\Create.cshtml" />
+    <Content Include="Views\Gericht\Delete.cshtml" />
+    <Content Include="Views\Gericht\Details.cshtml" />
+    <Content Include="Views\Gericht\Edit.cshtml" />
+    <Content Include="Views\Gericht\Index.cshtml" />
+    <Content Include="Views\Menu\Create.cshtml" />
+    <Content Include="Views\Menu\Delete.cshtml" />
+    <Content Include="Views\Menu\Details.cshtml" />
+    <Content Include="Views\Menu\Edit.cshtml" />
+    <Content Include="Views\Menu\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="DataTransferObjects\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -261,8 +259,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711031021475_initialcreate.resx">
-      <DependentUpon>201711031021475_initialcreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711101716125_initialcreate.resx">
+      <DependentUpon>201711101716125_initialcreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

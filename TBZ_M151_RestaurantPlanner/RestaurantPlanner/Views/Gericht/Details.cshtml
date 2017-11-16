@@ -1,12 +1,11 @@
 ﻿@model RestaurantPlanner.Models.Gericht
 
 @{
-    ViewBag.Title = "Gericht Löschen";
+    ViewBag.Title = "Details";
 }
 
-<h2>Löschen</h2>
+<h2>Details</h2>
 
-<h3>Bist du sicher das du dieses Gericht löschen willst?</h3>
 <div>
     <h4>Gericht</h4>
     <hr />
@@ -26,15 +25,14 @@
         <dd>
             @Html.DisplayFor(model => model.GerichtPreis)
         </dd>
+        
+        <dd>
+            @Html.DropDownListFor(m => m.MenuZugehoerigkeit, new SelectList(MenuHelper.GetMenus()), "Show Menu", new { htmlAttributes = new { @class = "form-control" } }) 
+        </dd>
 
     </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Zurück zur Liste", "Index")
-        </div>
-    }
 </div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.GerichtId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

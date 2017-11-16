@@ -1,0 +1,58 @@
+﻿@model RestaurantPlanner.Models.Getraenk
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Getraenk</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GetraenkName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GetraenkName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GetraenkPreis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GetraenkPreis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HeissesGetraenk)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HeissesGetraenk)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AlkoholischesGetraenk)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AlkoholischesGetraenk)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GetraenkMenge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GetraenkMenge)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.GetraenkId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

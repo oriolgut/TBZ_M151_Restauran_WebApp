@@ -25,10 +25,8 @@ namespace RestaurantPlanner.Models
         [Required, Range(minimum: 0.04D, maximum: 0.7D)]
         public double GetraenkMenge { get; set; }
 
-        public int MenuId { get; set; }
-
-        [Required, ForeignKey(nameof(MenuId))]
-        public virtual Menu MenuZugehoerigkeit { get; set; }
+        [Required]
+        public virtual List<Menu> MenuZugehoerigkeit { get; set; }
 
         public virtual List<Tageskarte> Tageskarten { get; set; }
     }

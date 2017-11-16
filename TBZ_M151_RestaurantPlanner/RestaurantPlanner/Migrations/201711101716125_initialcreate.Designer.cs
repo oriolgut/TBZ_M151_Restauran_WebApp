@@ -13,7 +13,7 @@ namespace RestaurantPlanner.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201711031021475_initialcreate"; }
+            get { return "201711101716125_initialcreate"; }
         }
         
         string IMigrationMetadata.Source

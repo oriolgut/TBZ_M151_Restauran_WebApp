@@ -171,9 +171,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\GerichtController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\GetraenkController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="DataTransferObjects\GerichtDataTransferObject.cs" />
     <Compile Include="Global.asax.cs">
@@ -227,10 +226,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Gericht\Create.cshtml" />
     <Content Include="Views\Gericht\Delete.cshtml" />
     <Content Include="Views\Gericht\Details.cshtml" />
@@ -241,6 +236,11 @@
     <Content Include="Views\Menu\Details.cshtml" />
     <Content Include="Views\Menu\Edit.cshtml" />
     <Content Include="Views\Menu\Index.cshtml" />
+    <Content Include="Views\Getraenk\Create.cshtml" />
+    <Content Include="Views\Getraenk\Delete.cshtml" />
+    <Content Include="Views\Getraenk\Details.cshtml" />
+    <Content Include="Views\Getraenk\Edit.cshtml" />
+    <Content Include="Views\Getraenk\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

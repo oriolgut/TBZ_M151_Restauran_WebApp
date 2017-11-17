@@ -1,0 +1,44 @@
+﻿@model RestaurantPlanner.Models.Tageskarte
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tageskarte</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Gerichte
+        </dt>
+        @foreach (var item in Model.Gerichte)
+        {
+            <dd>
+                @item.GerichtName
+            </dd>
+        }
+        <dt>
+            Getränke
+        </dt>
+        @foreach (var item in Model.Getraenke)
+        {
+            <dd>
+                @item.GetraenkName
+            </dd>
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.Ablaufdatum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ablaufdatum)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TageskarteId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

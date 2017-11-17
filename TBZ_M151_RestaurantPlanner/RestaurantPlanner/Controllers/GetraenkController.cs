@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using RestaurantPlanner.DataTransferObjects;
 using RestaurantPlanner.DAL;
 using RestaurantPlanner.Models;
 
@@ -47,16 +48,31 @@ namespace RestaurantPlanner.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "GetraenkId,GetraenkName,GetraenkPreis,HeissesGetraenk,AlkoholischesGetraenk,GetraenkMenge")] Getraenk getraenk)
+        public ActionResult Create(GetraenkDataTransferObject getraenkDataTransferObject)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid) return View(getraenkDataTransferObject);
+            var menu = db.Menus.FirstOrDefault(x => x.MenuName.Equals(getraenkDataTransferObject.MenuZugehoerigkeit));
+            if (menu == null)
             {
-                db.Getraenke.Add(getraenk);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                throw new WebException("The choosen Menu doesn't exists. Contact the Systemadministrator");
             }
+            var getraenk = new Getraenk
+            {
+                GetraenkId = getraenkDataTransferObject.GetraenkId,
+                GetraenkName = getraenkDataTransferObject.GetraenkName,
+                GetraenkPreis = getraenkDataTransferObject.GetraenkPreis,
+                GetraenkMenge = getraenkDataTransferObject.GetraenkMenge,
+                AlkoholischesGetraenk = getraenkDataTransferObject.AlkoholischesGetraenk,
+                HeissesGetraenk = getraenkDataTransferObject.HeissesGetraenk,
+                MenuZugehoerigkeit = new List<Menu>
+                {
+                    menu
+                }
+            };
+            db.Getraenke.Add(getraenk);
+            db.SaveChanges();
 
-            return View(getraenk);
+            return RedirectToAction("Index");
         }
 
         // GET: Getraenk/Edit/5
@@ -71,7 +87,16 @@ namespace RestaurantPlanner.Controllers
             {
                 return HttpNotFound();
             }
-            return View(getraenk);
+            var getraenkDataTransferObject = new GetraenkDataTransferObject
+            {
+                GetraenkId = getraenk.GetraenkId,
+                GetraenkName = getraenk.GetraenkName,
+                GetraenkPreis = getraenk.GetraenkPreis,
+                GetraenkMenge = getraenk.GetraenkMenge,
+                AlkoholischesGetraenk = getraenk.AlkoholischesGetraenk,
+                HeissesGetraenk = getraenk.HeissesGetraenk
+            };
+            return View(getraenkDataTransferObject);
         }
 
         // POST: Getraenk/Edit/5
@@ -79,15 +104,22 @@ namespace RestaurantPlanner.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "GetraenkId,GetraenkName,GetraenkPreis,HeissesGetraenk,AlkoholischesGetraenk,GetraenkMenge")] Getraenk getraenk)
+        public ActionResult Edit(GetraenkDataTransferObject getraenkDataTransferObject)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid) return View(getraenkDataTransferObject);
+
+            var menu = db.Menus.FirstOrDefault(x => x.MenuName.Equals(getraenkDataTransferObject.MenuZugehoerigkeit));
+            if (menu == null)
             {
-                db.Entry(getraenk).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                throw new WebException("The choosen Menu doesn't exists. Contact the Systemadministrator");
             }
-            return View(getraenk);
+
+            var getraenk = db.Getraenke.First(x => x.GetraenkId.Equals(getraenkDataTransferObject.GetraenkId));
+            getraenk.MenuZugehoerigkeit.Add(menu);
+
+            db.Entry(getraenk).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // GET: Getraenk/Delete/5

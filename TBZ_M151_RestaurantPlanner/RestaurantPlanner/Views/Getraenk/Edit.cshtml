@@ -1,4 +1,4 @@
-﻿@model RestaurantPlanner.Models.Getraenk
+﻿@model RestaurantPlanner.DataTransferObjects.GetraenkDataTransferObject
 
 @{
     ViewBag.Title = "Edit";
@@ -57,6 +57,14 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.GetraenkMenge, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.GetraenkMenge, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.MenuZugehoerigkeit,"Menu", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.MenuZugehoerigkeit, new SelectList(MenuHelper.GetMenus()), "Select Menu", new { htmlAttributes = new { @class = "form-control" } }) 
+                @Html.ValidationMessageFor(model => model.MenuZugehoerigkeit, "", new {@class = "text-danger"})
             </div>
         </div>
 

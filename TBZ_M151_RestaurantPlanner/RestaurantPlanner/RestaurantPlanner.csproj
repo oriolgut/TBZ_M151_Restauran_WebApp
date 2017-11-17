@@ -174,8 +174,10 @@
     <Compile Include="Controllers\GerichtController.cs" />
     <Compile Include="Controllers\GetraenkController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\TageskarteController.cs" />
     <Compile Include="DataTransferObjects\GerichtDataTransferObject.cs" />
     <Compile Include="DataTransferObjects\GetraenkDataTransferObject.cs" />
+    <Compile Include="DataTransferObjects\TageskarteDataTransferObject.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -246,6 +248,11 @@
     <Content Include="Views\Getraenk\Details.cshtml" />
     <Content Include="Views\Getraenk\Edit.cshtml" />
     <Content Include="Views\Getraenk\Index.cshtml" />
+    <Content Include="Views\Tageskarte\Create.cshtml" />
+    <Content Include="Views\Tageskarte\Delete.cshtml" />
+    <Content Include="Views\Tageskarte\Details.cshtml" />
+    <Content Include="Views\Tageskarte\Edit.cshtml" />
+    <Content Include="Views\Tageskarte\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

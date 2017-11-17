@@ -175,6 +175,7 @@
     <Compile Include="Controllers\GetraenkController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="DataTransferObjects\GerichtDataTransferObject.cs" />
+    <Compile Include="DataTransferObjects\GetraenkDataTransferObject.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -182,6 +183,10 @@
     <Compile Include="Migrations\201711101716125_initialcreate.cs" />
     <Compile Include="Migrations\201711101716125_initialcreate.Designer.cs">
       <DependentUpon>201711101716125_initialcreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711161822547_corrected_references.cs" />
+    <Compile Include="Migrations\201711161822547_corrected_references.Designer.cs">
+      <DependentUpon>201711161822547_corrected_references.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Gericht.cs" />
@@ -261,6 +266,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201711101716125_initialcreate.resx">
       <DependentUpon>201711101716125_initialcreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711161822547_corrected_references.resx">
+      <DependentUpon>201711161822547_corrected_references.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
